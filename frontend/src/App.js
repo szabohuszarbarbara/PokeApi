@@ -1,8 +1,9 @@
+import PokemonListContainer from "./components/pokemonList/PokemonListContainer";
 
 function App() {
   return (
     <>
-      POKEMON
+      <PokemonListContainer />
     </>
   );
 }
