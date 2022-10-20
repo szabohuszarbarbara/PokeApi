@@ -1,4 +1,6 @@
 HELP.md
+
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
@@ -6,7 +8,6 @@ target/
 .properties
 application.properties
 /application.properties
-carngo/src/main/resources/application.properties
 
 ### STS ###
 .apt_generated
