@@ -1,15 +1,19 @@
 import React from 'react'
+import "./PokemonList.css";
 
 export default function PokemonList({ pokeList }) {
     return (
         <>
+            <div className="card-container">
             {pokeList.map(p => (
-                <div key={p.name}>
+                <div className="card" key={p.name}>
                     <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${p.id}.png`} alt=""/>
-                    <span>{p.name}</span>
+                    <div>{p.id}</div>
+                    <div>{p.name.toUpperCase()}</div>
                 </div>
             )
             )}
+            </div>
         </>
     )
 }
