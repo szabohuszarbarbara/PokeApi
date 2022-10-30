@@ -4,6 +4,7 @@ import PokemonList from "./PokemonList";
 
 function PokemonListContainer() {
     const [pokeList, setPokeList] = useState([]);
+    const [color, setColor] = useState("white")
 
     useEffect(  () => {
         axios.get("https://pokeapi.co/api/v2/pokemon").then(res => {
@@ -26,7 +27,7 @@ function PokemonListContainer() {
 
     return (
         <>
-            <PokemonList pokeList={pokeList}/>
+            <PokemonList pokeList={pokeList} color = {color} />
         </>
 
     );
