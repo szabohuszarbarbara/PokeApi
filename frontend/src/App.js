@@ -1,9 +1,9 @@
-import PokemonListContainer from "./components/pokemonList/PokemonListContainer";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <>
-      <PokemonListContainer />
+      <Home />
     </>
   );
 }
