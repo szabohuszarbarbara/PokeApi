@@ -1,11 +1,22 @@
+
 .card-container {
-    padding: 20px;
+    width: 80vw;
+    height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    gap: 2rem;
+    margin: 4rem 5vw;
+    padding: 0;
 }
 
 .card {
     padding: 20px;
+    cursor: grab;
+    border-radius: 20%;
+    box-shadow: 10px 10px 5px #d5d5d5;
+}
+.card :hover {
+    transform: scale(1.1);
 }
