@@ -1,8 +1,13 @@
 import React from 'react';
+import "./CardModal.css";
 
 function PokemonData(props) {
+    if (!props.show) { return null; }
     return (
-        <div></div>
+        <div className={"modal-container"}>
+            Modal
+
+        </div>
     );
 }
 
