@@ -22,7 +22,7 @@ export default function PokemonListItem({ pokeList}) {
                 </div>
             )
             )}
-                <PokemonData show={ show } id = {id} />
+                <PokemonData show={ show } id = {id} setShow={setShow}/>
             </div>
         </>
     )
