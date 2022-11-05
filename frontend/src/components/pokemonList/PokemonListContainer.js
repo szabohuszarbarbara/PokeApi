@@ -34,11 +34,12 @@ function PokemonListContainer() {
     const getPokeList = (urls) => {
         urls.map( async url => await axios.get(url).then(async result => {
 
-            const color = await getPokeColor(result.data.species.url)
+            const pData = result.data
+            pData.color = await getPokeColor(result.data.species.url)
 
             setPokeList(
                 state => {
-                    state = [...state, result.data]
+                    state = [...state, pData]
                     state.sort((a, b) => a.id > b.id ? 1 : -1)
                     return state
                 }
