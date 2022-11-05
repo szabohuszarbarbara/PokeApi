@@ -9,7 +9,7 @@ function PokemonListContainer() {
     const [prevUrl, setPrevUrl] = useState("")
     const [nextUrl, setNextUrl] = useState("")
 
-    useEffect(  () => {
+    useEffect(   () => {
         setPokeList([])
         getData();
         // getColor
@@ -18,30 +18,28 @@ function PokemonListContainer() {
         // hashmao
     }, [url])
 
-    const getData = async () => {
-        await axios.get(url).then(async result => {
+    const getData = () => {
+        axios.get(url).then(result => {
             setPrevUrl(result.data.previous)
             setNextUrl(result.data.next)
             const resultList = result.data.results
             const urls = resultList.map(p => p.url)
-            await getPokeList(urls);
+            getPokeList(urls);
         })
             .catch(function (error) {
                 console.log(error);
             })
     }
 
-    const getPokeList = async (urls) => {
-        urls.map( async url => await axios.get(url).then( async result => {
-/*
-            https://pokeapi.co/api/v2/pokemon-species/${id}/
-            */
+    const getPokeList = (urls) => {
+        urls.map( async url => await axios.get(url).then(async result => {
+
             const color = await getPokeColor(result.data.species.url)
 
             setPokeList(
-                state =>{
-                    state=[...state, result.data ]
-                    state.sort( (a,b) => a.id > b.id ? 1 : -1 )
+                state => {
+                    state = [...state, result.data]
+                    state.sort((a, b) => a.id > b.id ? 1 : -1)
                     return state
                 }
             );
@@ -50,11 +48,14 @@ function PokemonListContainer() {
                 console.log(error);
             }))
     }
-    const getPokeColor = async (url) => {
-        await axios.get(url).then(async result => {
-            return await result.data.color.name
-        })
 
+    const getPokeColor = async (url) => {
+        try {
+            const result = await axios.get(url)
+            return result.data.color.name
+        } catch(error) {
+            return error
+        }
     }
     const goToPrevPage = () => {
         setUrl(prevUrl)
