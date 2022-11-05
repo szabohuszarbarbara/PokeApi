@@ -12,28 +12,31 @@ function PokemonListContainer() {
     useEffect(  () => {
         setPokeList([])
         getData();
+        // getColor
+        // store result to localstorage (plus information needed to cards too
+        // merge data and color
+        // hashmao
     }, [url])
 
     const getData = async () => {
-        await axios.get(url).then(result => {
+        await axios.get(url).then(async result => {
             setPrevUrl(result.data.previous)
             setNextUrl(result.data.next)
             const resultList = result.data.results
             const urls = resultList.map(p => p.url)
-
-            getPokeList(urls);
+            await getPokeList(urls);
         })
             .catch(function (error) {
                 console.log(error);
             })
-
     }
 
     const getPokeList = async (urls) => {
         urls.map( async url => await axios.get(url).then( async result => {
-
-/*            await getPokeColor(result.data.species.url)
-            console.log(getPokeColor(result.data.species.url))*/
+/*
+            https://pokeapi.co/api/v2/pokemon-species/${id}/
+            */
+            const color = await getPokeColor(result.data.species.url)
 
             setPokeList(
                 state =>{
@@ -47,11 +50,12 @@ function PokemonListContainer() {
                 console.log(error);
             }))
     }
-/*    const getPokeColor = async (p) => {
-        return await axios.get(p).then(result => {
-            result.data.color
+    const getPokeColor = async (url) => {
+        await axios.get(url).then(async result => {
+            return await result.data.color.name
         })
-    }*/
+
+    }
     const goToPrevPage = () => {
         setUrl(prevUrl)
     }
@@ -62,8 +66,8 @@ function PokemonListContainer() {
 
     return (
         <>
-            <PokemonListItem pokeList={pokeList} />
             <Pagination goToPrevPage={ prevUrl ? goToPrevPage : null} goToNextPage={nextUrl ? goToNextPage : null}/>
+            <PokemonListItem pokeList={pokeList} />
         </>
     );
 }
