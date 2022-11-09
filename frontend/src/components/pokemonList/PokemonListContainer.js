@@ -12,10 +12,6 @@ function PokemonListContainer() {
     useEffect(   () => {
         setPokeList([])
         getData();
-        // getColor
-        // store result to localstorage (plus information needed to cards too
-        // merge data and color
-        // hashmao
     }, [url])
 
     const getData = () => {
