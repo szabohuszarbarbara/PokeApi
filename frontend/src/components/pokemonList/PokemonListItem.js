@@ -19,7 +19,10 @@ export default function PokemonListItem({ pokeList}) {
                 <div style={{backgroundColor: p.color }} className="card" key={p.id} onClick={ () => openModal(p) }>
                     <div className={"card-image"}><img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${p.id}.png`} alt=""/></div>
                     <div className={"card-id"}>#{p.id.toLocaleString('en-US', {minimumIntegerDigits: 3, useGrouping:false})}</div>
-                    <div className={"card-name"}>{p.name.toUpperCase()}</div>
+                    <div className={"card-tag"}>
+                        <div className={"card-name"}>{p.name.toUpperCase()}</div>
+                    </div>
+
                 </div>
             )
             )}
