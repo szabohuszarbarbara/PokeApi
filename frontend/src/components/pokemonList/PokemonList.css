@@ -20,14 +20,44 @@
     cursor: grab;
     border-radius: 20%;
     box-shadow: 10px 10px 5px #d5d5d5;
+    background-repeat: no-repeat;
+    background-position: unset;
+}
+.red {
+    background-image: url("../img/pokeball.png"), linear-gradient(to bottom, #ff1f83, #d13531);
+}
+.green {
+    background-image: url("../img/pokeball.png"), linear-gradient(to bottom, #ade179, #3e7a39);
+}
+.blue {
+    background-image: url("../img/pokeball.png"), linear-gradient(to bottom, #4af1e3, #1465be);
+}
+.yellow {
+    background-image: url("../img/pokeball.png"), linear-gradient(to bottom, rgba(248, 245, 77, 0.89), #ecba16);
+}
+.white {
+    background-image: url("../img/pokeball.png"), linear-gradient(to bottom, rgba(245, 245, 245, 0.89), #e1e1e1);
+}
+.brown {
+    background-image: url("../img/pokeball.png"), linear-gradient(to bottom, rgb(201, 138, 20), #794f01);
+}
+.purple {
+    background-image: url("../img/pokeball.png"), linear-gradient(to bottom, rgb(147, 81, 246), #5804a6);
+}
+.pink {
+    background-image: url("../img/pokeball.png"), linear-gradient(to bottom, rgb(238, 164, 215), #c451ba);
+}
+.gray{
+    background-image: url("../img/pokeball.png"), linear-gradient(to bottom, rgb(161, 160, 160), #525252);
 }
 .card:hover {
     transform: scale(1.1);
 }
 .card-image {
     display: flex;
-    justify-content: center;
+    align-self: center;
     margin-bottom: 5px;
+    transform: scale(1.2);
 }
 .card-name {
     display: flex;

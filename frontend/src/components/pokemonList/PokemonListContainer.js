@@ -40,6 +40,8 @@ function PokemonListContainer() {
                     return state
                 }
             );
+            const data = JSON.stringify(pokeList)
+            localStorage.setItem("data", data)
         })
             .catch(function (error) {
                 console.log(error);
