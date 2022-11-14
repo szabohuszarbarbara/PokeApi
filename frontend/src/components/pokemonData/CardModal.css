@@ -72,6 +72,10 @@
     font-size: 24px;
     color: #1a1a1a;
 }
+.modal-id {
+    font-size: 14px;
+    align-self: center;
+}
 .modal-text {
     align-self: flex-start;
 }

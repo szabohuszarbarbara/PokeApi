@@ -58,6 +58,7 @@
     align-self: center;
     margin-bottom: 5px;
     transform: scale(1.2);
+    margin-top: 20px;
 }
 .card-name {
     display: flex;
