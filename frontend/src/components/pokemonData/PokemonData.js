@@ -7,13 +7,9 @@ function PokemonData(props) {
     const pokeData = props.pokeData
     console.log(pokeData)
 
-    // add stats (hp, speed, attack, defense),  types
-
     const closeModal = () => {
         setShow(false);
     }
-
-
 
     if (!props.show) { return null; }
 
