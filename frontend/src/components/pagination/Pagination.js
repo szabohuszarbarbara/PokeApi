@@ -4,8 +4,8 @@ function Pagination( {goToPrevPage, goToNextPage} ) {
 
     return (
         <div>
-            <button onClick={goToPrevPage}>Previous</button>
-            <button onClick={goToNextPage}>Next</button>
+            <button className={"simple"} onClick={goToPrevPage}>Previous</button>
+            <button className={"simple"} onClick={goToNextPage}>Next</button>
         </div>
     );
 }
