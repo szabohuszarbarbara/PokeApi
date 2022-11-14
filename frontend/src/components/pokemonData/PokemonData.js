@@ -5,7 +5,6 @@ import "../pokemonList/PokemonList.css";
 function PokemonData(props) {
     const setShow = props.setShow
     const pokeData = props.pokeData
-    console.log(pokeData)
 
     const closeModal = () => {
         setShow(false);
