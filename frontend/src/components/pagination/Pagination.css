@@ -4,6 +4,10 @@
     align-items: center;
     justify-content: center;
     gap: 150px;
+    position:relative;
+    z-index: 22;
+    background: rgba(255, 255, 255, 0.89);
+    width: 100%;
 }
 
 .pagination-button {
