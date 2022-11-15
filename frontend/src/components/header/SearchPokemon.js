@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import PokemonData from "../pokemonData/PokemonData";
+import "./Header.css"
 
 function SearchPokemon() {
     const [show, setShow] = useState(false)
@@ -44,8 +45,10 @@ function SearchPokemon() {
 
     return (
         <>
-            <input type="text" value={pokemonName} onChange={ (event) => handleNameChange(event) }></input>
-            <button onClick={searchPokemon}>Search Pokemon</button>
+            <div className={"search-box"}>
+                <input type="text" value={pokemonName} onChange={ (event) => handleNameChange(event) }></input>
+                <button onClick={searchPokemon}>Search Pokemon</button>
+            </div>
         </>
     );
 }
