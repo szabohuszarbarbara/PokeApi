@@ -30,3 +30,10 @@
     text-shadow: 0px 1px 1px rgba(248, 219, 77, 0.89);
     background: rgb(255, 145, 0);
 }
+
+@media screen and (max-width: 440px) {
+    .pagination-container {
+        gap: 30vw;
+        width: 100%;
+    }
+}
