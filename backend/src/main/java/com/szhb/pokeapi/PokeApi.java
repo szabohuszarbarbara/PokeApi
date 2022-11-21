@@ -1,4 +1,4 @@
-package com.pokeapi.backend;
+package com.szhb.pokeapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
