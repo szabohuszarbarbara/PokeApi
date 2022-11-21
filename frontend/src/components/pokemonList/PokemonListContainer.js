@@ -21,7 +21,7 @@ function PokemonListContainer() {
             const resultList = result.data.results
             const urls = resultList.map(p => p.url)
             getPokeList(urls);
-            localStorage.setItem("data", JSON.stringify(pokeList))
+/*            localStorage.setItem("data", JSON.stringify(pokeList))*/
         })
             .catch(function (error) {
                 console.log(error);
