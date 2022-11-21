@@ -1,4 +1,4 @@
-package com.pokeapi.backend;
+package com.szhb.pokeapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
