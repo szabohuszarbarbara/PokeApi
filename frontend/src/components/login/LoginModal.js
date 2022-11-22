@@ -57,10 +57,6 @@ function LoginModal(props) {
                             <span>Password</span>
                             <i></i>
                         </div>
-                        <div className='rememberContainer'>
-                            <input id="rememberCheckbox" type='checkbox'></input>
-                            <label id="checkboxLabel" htmlFor="rememberCheckbox">Remember me</label>
-                        </div>
                         <button className='modalButton' type='submit' >Log In</button>
                     </form>
 

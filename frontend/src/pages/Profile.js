@@ -6,6 +6,15 @@ function Profile(props) {
     return (
         <>
             <Header />
+            <br/>
+            <br/>
+            <br/>
+            PROFILE
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
             <Footer />
 
         </>
