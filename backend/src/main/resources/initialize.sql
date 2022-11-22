@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
-                       id int,
+                       id bigint,
                        name varchar(255),
                        username varchar(255) UNIQUE,
                        email varchar(255) UNIQUE,
