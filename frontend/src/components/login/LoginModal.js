@@ -1,40 +1,17 @@
-import {useState} from "react";
+import {useContext, useState} from "react";
 import "../pokemonData/CardModal.css"
 import Pikachu from"../img/pikachu.jpg";
+import AuthContext from "../../context/authContext";
 
 function LoginModal(props) {
     const setShow = props.setShow
+    let {setUser} = useContext(AuthContext);
     const [username, setUserName] = useState('');
-    const [email, setEmail] = useState("");
     const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [name, setName] = useState('');
-    const [error, setError] = useState("");
 
     const closeModal = () => {
         setShow(false);
     }
-    const validatePassword = (e) => {
-        if (password !== confirmPassword) {
-            setError("Password and Confirm Password does not match.");
-        } else {
-            setError("");
-        }
-
-    }
-/*    const clickRegister = async (e) => {
-        e.preventDefault();
-        const payload = {
-            'username': username,
-            'name': name,
-            'password': password,
-            'email': email
-        }
-        const registeredUser = await getUserData('/api/users/register', payload);
-        if (registeredUser) {
-            await clickLogin(e);
-        }
-    }*/
 
     const clickLogin = async (e) => {
         e.preventDefault();
@@ -43,15 +20,13 @@ function LoginModal(props) {
             'password': password
         };
         const user = await getUserData('/login', payload);
-/*        if (user.accessToken) {
+        if (user.accessToken) {
             localStorage.setItem("user", JSON.stringify(user));
-            setProfile(user);
+            setUser(user);
             closeModal();
-        }*/
+        }
     }
-/*    const setProfile = (user) => {
-        setUser(user);
-    }*/
+
     const getUserData = async (url, payload) => {
         const response = await fetch(url, {
             method: 'POST',
