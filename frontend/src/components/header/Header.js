@@ -1,13 +1,13 @@
 import PokemonLogo from "../img/PokemonLogoLayered.png"
 import "./Header.css"
-import SearchPokemon from "./SearchPokemon";
+import NavBar from "../navbar/NavBar";
 
 function Header() {
     return (
         <>
             <div className={"header-container"}>
                 <div className={"header-image"}><img src={PokemonLogo} alt=""/></div>
-                <SearchPokemon />
+                <NavBar />
             </div>
         </>
     );
