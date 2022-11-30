@@ -5,6 +5,8 @@ import lombok.*;
 
 import javax.persistence.*;
 
+import static com.szhb.pokeapi.security.UserRole.ROLE_USER;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -14,7 +16,8 @@ import javax.persistence.*;
 @Table(name = "users")
 public class UserModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.AUTO, generator="my_entity_seq_gen")
+    @SequenceGenerator(name="my_entity_seq_gen", sequenceName="MY_ENTITY_SEQ")
     private Long id;
     private String name;
     private String username;
@@ -25,5 +28,12 @@ public class UserModel {
     private String profileDescription;
     @Enumerated(EnumType.STRING)
     private UserRole role;
+
+    public UserModel(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.role = ROLE_USER;
+    }
 
 }
