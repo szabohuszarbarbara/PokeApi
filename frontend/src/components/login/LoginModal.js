@@ -44,7 +44,7 @@ function LoginModal(props) {
     }
 
     const validatePassword = (e) => {
-        if (password !== validatePassword) {
+        if (password !== confirmPassword) {
             setError("Password and Confirm Password do not match.");
         } else {
             setError("");
