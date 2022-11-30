@@ -45,7 +45,7 @@ function LoginModal(props) {
 
     const validatePassword = (e) => {
         if (password !== validatePassword) {
-            setError("Password and Confirm Password does not match.");
+            setError("Password and Confirm Password do not match.");
         } else {
             setError("");
         }
@@ -128,7 +128,7 @@ function LoginModal(props) {
                         </div>
                         <br/>
                         <div className='inputBox'>
-                            <span>Re-enter password</span>
+                            <span>Confirm password</span>
                             <input type="password" required="required" onChange={e => setConfirmPassword(e.target.value)}
                                    onBlur={validatePassword} value={confirmPassword}/>
                             <i></i>
