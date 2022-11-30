@@ -12,11 +12,11 @@ CREATE TABLE users (
                        PRIMARY KEY (id)
 );
 INSERT INTO users (id, name, username, email, password, image_source, profile_description, role)
-VALUES (1, 'Tom Hanks', 'Tom', 'tomhanks@gmail.com', '1234', null, 'I am a great actor of great movies.','ROLE_ADMIN');
+VALUES (1, 'Tom Hanks', 'Tom', 'tomhanks@gmail.com', '$2a$10$9grcRNFGIO6aWL.V5jkjKO.RX.RmyD6y7zcljKFNV2E4WO3FUARbi', null, 'I am a great actor of great movies.','ROLE_ADMIN');
 
 INSERT INTO users (id, name, username, email, password, image_source, profile_description, role)
-VALUES (2, 'Tim Burton', 'Tim', 'timburton@gmail.com', '1234', null, 'I am a great director of great movies.','ROLE_ADMIN');
+VALUES (2, 'Tim Burton', 'Tim', 'timburton@gmail.com', '$2a$10$9grcRNFGIO6aWL.V5jkjKO.RX.RmyD6y7zcljKFNV2E4WO3FUARbi', null, 'I am a great director of great movies.','ROLE_ADMIN');
 
 INSERT INTO users (id, name, username, email, password, image_source, profile_description, role)
-VALUES (3, 'Johnny Depp', 'Johnny', 'johnny01@gmail.com', '1234', null, 'I am a great actor.','ROLE_ADMIN');
+VALUES (3, 'Johnny Depp', 'Johnny', 'johnny01@gmail.com', '$2a$10$9grcRNFGIO6aWL.V5jkjKO.RX.RmyD6y7zcljKFNV2E4WO3FUARbi', null, 'I am a great actor.','ROLE_ADMIN');
 
