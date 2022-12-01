@@ -1,4 +1,4 @@
-package com.szhb.pokeapi.security.model;
+package com.szhb.pokeapi.security.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

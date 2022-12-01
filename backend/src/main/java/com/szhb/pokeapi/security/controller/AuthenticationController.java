@@ -1,9 +1,9 @@
 package com.szhb.pokeapi.security.controller;
 
-import com.szhb.pokeapi.model.RegisterModel;
+import com.szhb.pokeapi.security.dto.RegisterRequest;
 import com.szhb.pokeapi.security.*;
-import com.szhb.pokeapi.security.model.AuthenticationRequest;
-import com.szhb.pokeapi.security.model.JwtResponse;
+import com.szhb.pokeapi.security.dto.AuthenticationRequest;
+import com.szhb.pokeapi.security.dto.JwtResponse;
 import com.szhb.pokeapi.security.service.AuthUserDetailsServiceImpl;
 import com.szhb.pokeapi.service.UserService;
 import lombok.AllArgsConstructor;
@@ -54,7 +54,7 @@ public class AuthenticationController {
     private final UserService userService;
 
     @PostMapping(value = "/register")
-    public ResponseEntity<?> registerUser(@RequestBody RegisterModel body){
+    public ResponseEntity<?> registerUser(@RequestBody RegisterRequest body){
         String response = userService.addUser(body);
         if(Objects.equals(response, "success")){
             return ResponseEntity.ok(body);
