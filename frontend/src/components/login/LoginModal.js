@@ -37,7 +37,7 @@ function LoginModal(props) {
             'password': password,
             'email': email
         }
-        const registeredUser = await getUserData('/api/users/register', payload);
+        const registeredUser = await getUserData('/register', payload);
         if (registeredUser) {
             await clickLogin(e);
         }
