@@ -5,18 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
-@Getter
-@NoArgsConstructor
 @AllArgsConstructor
-public class PokemonModel {
+@NoArgsConstructor
+@Getter
+public class PokemonTypeItem {
     @JsonIgnoreProperties(ignoreUnknown = true)
     private String name;
-    private String id;
-    private String height;
-    private String weight;
-    private List<PokemonType> types;
-    private List<PokemonStat> stats;
-
 }

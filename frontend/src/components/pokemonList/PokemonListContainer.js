@@ -16,8 +16,8 @@ function PokemonListContainer() {
     const getData = () => {
         axios.get(url).then(result => {
             console.log(result)
-            setPrevUrl(result.data.baseList.previous)
-            setNextUrl(result.data.baseList.next)
+            setPrevUrl(result.data.baseApiInfo.previous)
+            setNextUrl(result.data.baseApiInfo.next)
             setPokeList(result.data.pokemon)
         })
             .catch(function (error) {
