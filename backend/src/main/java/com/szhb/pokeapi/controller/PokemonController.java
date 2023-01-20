@@ -1,5 +1,7 @@
 package com.szhb.pokeapi.controller;
 
+import com.szhb.pokeapi.model.PokemonModel;
+import com.szhb.pokeapi.model.PokemonResponseList;
 import com.szhb.pokeapi.service.PokemonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -7,7 +9,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
+
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/pokemon")
@@ -21,10 +24,7 @@ public class PokemonController {
     }
 
     @GetMapping
-    public void getAllPokemon() {
-        System.out.println("ffff");
-        ResponseEntity<String>  o = pokemonService.getPokemon();
-
-
+    public PokemonResponseList getAllPokemon() {
+        return pokemonService.getPokemonList();
     }
 }

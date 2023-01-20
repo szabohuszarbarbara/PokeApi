@@ -10,50 +10,21 @@ function PokemonListContainer() {
     const [nextUrl, setNextUrl] = useState("")
 
     useEffect(   () => {
-        setPokeList([])
         getData();
     }, [url])
 
     const getData = () => {
         axios.get(url).then(result => {
-            setPrevUrl(result.data.previous)
-            setNextUrl(result.data.next)
-            const resultList = result.data.results
-            const urls = resultList.map(p => p.url)
-            getPokeList(urls);
+            console.log(result)
+            setPrevUrl(result.data.baseList.previous)
+            setNextUrl(result.data.baseList.next)
+            setPokeList(result.data.pokemon)
         })
             .catch(function (error) {
                 console.log(error);
             })
     }
 
-    const getPokeList = (urls) => {
-        urls.map( async url => await axios.get(url).then(async result => {
-
-            const pData = result.data
-            pData.color = await getPokeColor(result.data.species.url)
-
-            setPokeList(
-                state => {
-                    state = [...state, pData]
-                    state.sort((a, b) => a.id > b.id ? 1 : -1)
-                    return state
-                }
-            );
-        })
-            .catch(function (error) {
-                console.log(error);
-            }))
-    }
-
-    const getPokeColor = async (url) => {
-        try {
-            const result = await axios.get(url)
-            return result.data.color.name
-        } catch(error) {
-            return error
-        }
-    }
     const goToPrevPage = () => {
         setUrl(prevUrl)
     }
