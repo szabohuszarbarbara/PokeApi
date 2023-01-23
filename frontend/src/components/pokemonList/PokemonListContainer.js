@@ -4,8 +4,9 @@ import PokemonListItem from "./PokemonListItem";
 import Pagination from "../pagination/Pagination";
 
 function PokemonListContainer() {
+    const BASE_URL = "/api/pokemon?"
     const [pokeList, setPokeList] = useState([]);
-    const [url, setUrl] = useState("/api/pokemon")
+    const [url, setUrl] = useState(BASE_URL + "offset=0&limit=20")
     const [prevUrl, setPrevUrl] = useState("")
     const [nextUrl, setNextUrl] = useState("")
 
@@ -15,7 +16,6 @@ function PokemonListContainer() {
 
     const getData = () => {
         axios.get(url).then(result => {
-            console.log(result)
             setPrevUrl(result.data.baseApiInfo.previous)
             setNextUrl(result.data.baseApiInfo.next)
             setPokeList(result.data.pokemon)
@@ -26,11 +26,13 @@ function PokemonListContainer() {
     }
 
     const goToPrevPage = () => {
-        setUrl(prevUrl)
+        let newUrl = prevUrl.split("?")
+        setUrl(BASE_URL + newUrl[1])
     }
 
     const goToNextPage = () => {
-        setUrl(nextUrl)
+        let newUrl = nextUrl.split("?")
+        setUrl(BASE_URL + newUrl[1])
     }
 
     return (

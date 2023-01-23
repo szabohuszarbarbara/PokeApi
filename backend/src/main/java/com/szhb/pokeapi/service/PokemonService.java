@@ -11,9 +11,9 @@ import java.util.stream.Collectors;
 
 @Service
 public class PokemonService {
-    public PokemonResponseList getPokemonList() {
+    public PokemonResponseList getPokemonList(String offset, String limit) {
         RestTemplate restTemplate = new RestTemplate();
-        String baseUrl = "https://pokeapi.co/api/v2/pokemon";
+        String baseUrl = "https://pokeapi.co/api/v2/pokemon" + "?offset=" + offset + "&limit=" + limit;
         ResponseEntity<PokemonBaseList> basicInfo = restTemplate.getForEntity(baseUrl, PokemonBaseList.class);
         List<PokemonModel> pokemonList =  Objects.requireNonNull(basicInfo.getBody()).getResults().stream()
                 .map(obj -> {
