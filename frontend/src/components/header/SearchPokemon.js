@@ -14,10 +14,9 @@ function SearchPokemon() {
     })
 
     const searchPokemon = () => {
-        axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+        axios.get(`/api/pokemon/${pokemonName}`)
             .then(async result => {
                 const pData = result.data
-                    pData.color = await getPokeColor(result.data.species.url)
                     setPokeData(pData);
                     setPokemonName("")
                     setShow(true)
@@ -28,14 +27,6 @@ function SearchPokemon() {
             })
     }
 
-    const getPokeColor = async (url) => {
-        try {
-            const result = await axios.get(url)
-            return result.data.color.name
-        } catch(error) {
-            return error
-        }
-    }
 
     if (show) {
         return (

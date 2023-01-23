@@ -25,5 +25,9 @@ public class PokemonController {
     public PokemonResponseList getAllPokemon(@RequestParam("offset") String offset, @RequestParam("limit") String limit) {
         return pokemonService.getPokemonList(offset, limit);
     }
+    @GetMapping(value="{id}")
+    public PokemonModel getPokemonByIdOrName(@PathVariable String id) {
+        return pokemonService.getPokemonByIdOrName(id);
+    }
 
 }
