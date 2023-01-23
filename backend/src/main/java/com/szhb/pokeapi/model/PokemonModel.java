@@ -18,5 +18,11 @@ public class PokemonModel {
     private String weight;
     private List<PokemonType> types;
     private List<PokemonStat> stats;
+    private PokemonSpecies species;
+    private PokemonColor color;
+
+    public void setColor(PokemonColor color){
+        this.color = color;
+    }
 
 }

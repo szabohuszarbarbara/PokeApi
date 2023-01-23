@@ -1,8 +1,6 @@
 package com.szhb.pokeapi.service;
 
-import com.szhb.pokeapi.model.PokemonBaseList;
-import com.szhb.pokeapi.model.PokemonModel;
-import com.szhb.pokeapi.model.PokemonResponseList;
+import com.szhb.pokeapi.model.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -20,13 +18,14 @@ public class PokemonService {
         List<PokemonModel> pokemonList =  Objects.requireNonNull(basicInfo.getBody()).getResults().stream()
                 .map(obj -> {
                     ResponseEntity<PokemonModel> pokemon = restTemplate.getForEntity(obj.getUrl(), PokemonModel.class);
+                    String speciesUrl = Objects.requireNonNull(pokemon.getBody()).getSpecies().getUrl();
+                    ResponseEntity<PokemonColor> pokemonColor = restTemplate.getForEntity(speciesUrl, PokemonColor.class);
+                    pokemon.getBody().setColor(pokemonColor.getBody());
                     return pokemon.getBody();
                 }).collect(Collectors.toList());
-        PokemonResponseList pokemons = new PokemonResponseList(pokemonList, basicInfo.getBody());
+        PokemonResponseList pokemons = new PokemonResponseList(pokemonList, basicInfo.getBody() );
 
         return pokemons;
     }
-
-
 
 }
