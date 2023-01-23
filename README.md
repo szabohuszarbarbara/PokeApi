@@ -6,17 +6,16 @@ Features:
   - JWT token
 
 Tech stack:
- Java 
- Spring Boot
- Spring Security
- Hibernate
- Lombok
- React
- Axios
- PostgreSQL
- JSX
- HTML
- CSS
+ - Java 
+ - Spring Boot
+ - Spring Security
+ - Hibernate
+ - Lombok
+ - React
+ - Axios
+ - PostgreSQL
+ - HTML
+ - CSS
 
 API
-PokeAPI
+ - PokeAPI
