@@ -16,7 +16,7 @@ export default function PokemonListItem({ pokeList}) {
         <>
             <div className="card-container">
             {pokeList.map(p => (
-                <div className={`card ${p.color}`} key={p.id} onClick={ () => openModal(p) }
+                <div className={`card ${p.color.color.name}`} key={p.id} onClick={ () => openModal(p) }
                 >
                     <div className={"card-image"}><img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${p.id}.png`} alt=""/></div>
                     <div className={"card-id"}>#{p.id.toLocaleString('en-US', {minimumIntegerDigits: 3, useGrouping:false})}</div>
