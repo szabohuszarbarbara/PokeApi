@@ -1,4 +1,24 @@
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS pokemons;
+
+CREATE TABLE pokemons (
+                          id varchar(255),
+                          date DATE,
+                          PRIMARY KEY (date)
+);
+
+INSERT INTO pokemons (id, date)
+VALUES (1023, '2023-01-20');
+
+INSERT INTO pokemons (id, date)
+VALUES (563, '2023-01-21');
+
+INSERT INTO pokemons (id, date)
+VALUES (245, '2023-01-22');
+
+INSERT INTO pokemons (id, date)
+VALUES (89, '2023-01-23');
+
 
 CREATE TABLE users (
                        id serial NOT NULL,
