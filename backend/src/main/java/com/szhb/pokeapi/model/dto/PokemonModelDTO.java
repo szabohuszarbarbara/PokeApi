@@ -20,6 +20,7 @@ public class PokemonModelDTO {
     private List<PokemonStatDTO> stats;
     private PokemonSpeciesDTO species;
     private PokemonColorDTO color;
+    private PokemonSpritesDTO sprites;
 
     public void setColor(PokemonColorDTO color){
         this.color = color;
