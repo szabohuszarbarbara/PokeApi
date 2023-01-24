@@ -1,4 +1,3 @@
-import React, {useEffect} from 'react';
 import "./CardModal.css";
 import "../pokemonList/PokemonList.css";
 
