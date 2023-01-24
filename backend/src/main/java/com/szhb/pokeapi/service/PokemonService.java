@@ -1,44 +1,67 @@
 package com.szhb.pokeapi.service;
 
-import com.szhb.pokeapi.model.*;
+import com.szhb.pokeapi.model.PokemonDateModel;
+import com.szhb.pokeapi.model.dto.PokemonBaseListDTO;
+import com.szhb.pokeapi.model.dto.PokemonColorDTO;
+import com.szhb.pokeapi.model.dto.PokemonModelDTO;
+import com.szhb.pokeapi.model.dto.PokemonResponseListDTO;
+import com.szhb.pokeapi.repository.PokemonRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
 public class PokemonService {
     private final String BASE_URL = "https://pokeapi.co/api/v2/pokemon";
+    private final PokemonRepository pokemonRepository;
 
 
-    public PokemonResponseList getPokemonList(String offset, String limit) {
+    public PokemonResponseListDTO getPokemonList(String offset, String limit) {
         RestTemplate restTemplate = new RestTemplate();
         String baseUrl = BASE_URL + "?offset=" + offset + "&limit=" + limit;
-        ResponseEntity<PokemonBaseList> basicInfo = restTemplate.getForEntity(baseUrl, PokemonBaseList.class);
-        List<PokemonModel> pokemonList =  Objects.requireNonNull(basicInfo.getBody()).getResults().stream()
+        ResponseEntity<PokemonBaseListDTO> basicInfo = restTemplate.getForEntity(baseUrl, PokemonBaseListDTO.class);
+        List<PokemonModelDTO> pokemonList =  Objects.requireNonNull(basicInfo.getBody()).getResults().stream()
                 .map(obj -> {
-                    ResponseEntity<PokemonModel> pokemon = restTemplate.getForEntity(obj.getUrl(), PokemonModel.class);
+                    ResponseEntity<PokemonModelDTO> pokemon = restTemplate.getForEntity(obj.getUrl(), PokemonModelDTO.class);
                     String speciesUrl = Objects.requireNonNull(pokemon.getBody()).getSpecies().getUrl();
-                    ResponseEntity<PokemonColor> pokemonColor = restTemplate.getForEntity(speciesUrl, PokemonColor.class);
+                    ResponseEntity<PokemonColorDTO> pokemonColor = restTemplate.getForEntity(speciesUrl, PokemonColorDTO.class);
                     pokemon.getBody().setColor(pokemonColor.getBody());
                     return pokemon.getBody();
                 }).collect(Collectors.toList());
-        PokemonResponseList pokemons = new PokemonResponseList(pokemonList, basicInfo.getBody() );
+        PokemonResponseListDTO pokemons = new PokemonResponseListDTO(pokemonList, basicInfo.getBody() );
 
         return pokemons;
     }
 
-    public PokemonModel getPokemonByIdOrName(String id) {
+    public PokemonModelDTO getPokemonByIdOrName(String id) {
         RestTemplate restTemplate = new RestTemplate();
         String url = BASE_URL + "/" + id;
-        ResponseEntity<PokemonModel> pokemon = restTemplate.getForEntity(url, PokemonModel.class);
+        ResponseEntity<PokemonModelDTO> pokemon = restTemplate.getForEntity(url, PokemonModelDTO.class);
         String speciesUrl = Objects.requireNonNull(pokemon.getBody()).getSpecies().getUrl();
-        ResponseEntity<PokemonColor> pokemonColor = restTemplate.getForEntity(speciesUrl, PokemonColor.class);
+        ResponseEntity<PokemonColorDTO> pokemonColor = restTemplate.getForEntity(speciesUrl, PokemonColorDTO.class);
         pokemon.getBody().setColor(pokemonColor.getBody());
-        System.out.println(pokemon.getBody());
         return pokemon.getBody();
     }
+
+    public PokemonModelDTO getPokemonOfTheDay() {
+        LocalDate now = LocalDate.now();
+        Optional<PokemonDateModel> pokemonId = pokemonRepository.findByDate(now);
+        if (pokemonId.isEmpty()) {
+            Random random = new Random();
+            int id = random.nextInt(1279);
+            pokemonRepository.saveAndFlush(new PokemonDateModel(id, now));
+            return getPokemonByIdOrName(String.valueOf(id));
+        }
+        return getPokemonByIdOrName(String.valueOf(pokemonId.get().getId()));
+    }
+
 }
