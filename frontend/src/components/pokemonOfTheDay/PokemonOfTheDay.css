@@ -1,0 +1,30 @@
+.potd-container {
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.potd-item {
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-content: start;
+    justify-content: center;
+    align-items: center;
+}
+.potd-stripe {
+    position: relative;
+    margin: auto;
+    width: available;
+
+}
+.potd-image-container {
+    margin: auto;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

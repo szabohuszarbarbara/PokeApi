@@ -7,6 +7,7 @@
 button {
     margin: 10px;
     font-family: inherit;
+    cursor: pointer;
 }
 .simple {
     font-size: 16px;

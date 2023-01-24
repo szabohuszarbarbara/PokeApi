@@ -1,6 +1,6 @@
 package com.szhb.pokeapi.service;
 
-import com.szhb.pokeapi.model.RegisterModel;
+import com.szhb.pokeapi.model.dto.RegisterModelDTO;
 import com.szhb.pokeapi.model.UserModel;
 import com.szhb.pokeapi.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -15,7 +15,7 @@ public class UserService {
     private UserRepository userRepository;
     private PasswordEncoder encoder;
 
-    public String addUser(RegisterModel body) {
+    public String addUser(RegisterModelDTO body) {
         Optional<UserModel> userByEmail = userRepository.findUserByEmail(body.getEmail());
         Optional<UserModel> userByUsername = userRepository.findUserByUsername(body.getUsername());
         if(userByUsername.isPresent() ) {

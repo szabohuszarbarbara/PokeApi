@@ -23,8 +23,10 @@ function NavBar(props) {
             <nav>
                 <ul className='menu'>
                     <li><SearchPokemon /></li>
+                    <li className="item"><Link to="/pokedex/"><button> {'PokeDex' }</button></Link></li>
+                    {user? <li className="item"><Link to="/profile/"><button> {'Profile' }</button></Link></li> : null}
+
                     <li className="item"><button onClick={user? logout : renderModal}> {user ? 'Logout' : 'Login' }</button></li>
-                    <li className="item"><Link to="/profile/">Profile </Link></li>
                 </ul>
             </nav>
 

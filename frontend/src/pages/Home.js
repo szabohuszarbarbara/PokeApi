@@ -1,13 +1,13 @@
 import React from 'react';
-import PokemonListContainer from "../components/pokemonList/PokemonListContainer";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
+import PokemonOfTheDay from "../components/pokemonOfTheDay/PokemonOfTheDay";
 
-function Home(props) {
+function Home() {
     return (
         <div>
             <Header/>
-            <PokemonListContainer />
+            <PokemonOfTheDay />
             <Footer/>
         </div>
     );

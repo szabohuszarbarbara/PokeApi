@@ -1,13 +1,10 @@
 package com.szhb.pokeapi.controller;
 
-import com.szhb.pokeapi.model.PokemonModel;
-import com.szhb.pokeapi.model.PokemonResponseList;
+import com.szhb.pokeapi.model.dto.PokemonModelDTO;
+import com.szhb.pokeapi.model.dto.PokemonResponseListDTO;
 import com.szhb.pokeapi.service.PokemonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Set;
 
 @RestController
 @RequestMapping("/api/pokemon")
@@ -22,12 +19,17 @@ public class PokemonController {
 
     @GetMapping
     @ResponseBody
-    public PokemonResponseList getAllPokemon(@RequestParam("offset") String offset, @RequestParam("limit") String limit) {
+    public PokemonResponseListDTO getPokedexPokemons(@RequestParam("offset") String offset, @RequestParam("limit") String limit) {
         return pokemonService.getPokemonList(offset, limit);
     }
     @GetMapping(value="{id}")
-    public PokemonModel getPokemonByIdOrName(@PathVariable String id) {
+    public PokemonModelDTO getPokemonByIdOrName(@PathVariable String id) {
         return pokemonService.getPokemonByIdOrName(id);
+    }
+
+    @GetMapping(value= "/pokemon-of-the-day")
+    public PokemonModelDTO getPokemonOfTheDay() {
+        return pokemonService.getPokemonOfTheDay();
     }
 
 }

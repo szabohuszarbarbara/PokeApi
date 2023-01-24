@@ -18,13 +18,11 @@
     font-size:12px;
     text-decoration:none;
     color:#fff;
-    background-image: linear-gradient(bottom, rgb(170, 109, 30) 0%, rgb(212, 166, 51) 100%);
     box-shadow: inset 0px 1px 0px #fcf793, 0px 6px 0px #ffdb1d;
     border-radius: 5px;
 }
 .pagination-button:active {
     top:7px;
-    background-image: linear-gradient(bottom, rgb(170, 109, 30) 0%, rgb(212, 166, 51)0%);
     box-shadow: inset 0px 1px 0px #fcf793, inset 0px -1px 0px #ffdb1d;
     color: #794f01;
     text-shadow: 0px 1px 1px rgba(248, 219, 77, 0.89);
