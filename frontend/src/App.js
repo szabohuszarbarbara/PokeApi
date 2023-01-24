@@ -4,6 +4,7 @@ import {AuthProvider} from "./context/authContext";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import ProtectedRoute from "./context/ProtectedRoutes";
 import Profile from "./pages/Profile";
+import Pokedex from "./pages/Pokedex";
 
 function App() {
     let user = localStorage.getItem("user");
@@ -15,6 +16,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home/>} />
                     <Route path="/home" element={<Home/>} />
+                    <Route path="/pokedex" element={<Pokedex/>} />
                     <Route path="/profile" element= {<ProtectedRoute allowedRole="ROLE_ADMIN"><Profile /> </ProtectedRoute >} />
                 </Routes>
             </BrowserRouter>
