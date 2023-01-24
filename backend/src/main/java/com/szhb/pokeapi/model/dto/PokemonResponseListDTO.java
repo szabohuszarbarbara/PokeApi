@@ -1,4 +1,4 @@
-package com.szhb.pokeapi.model;
+package com.szhb.pokeapi.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class PokemonResponseList {
-    private List<PokemonModel> pokemon;
-    private PokemonBaseList baseApiInfo;
+public class PokemonResponseListDTO {
+    private List<PokemonModelDTO> pokemon;
+    private PokemonBaseListDTO baseApiInfo;
 }

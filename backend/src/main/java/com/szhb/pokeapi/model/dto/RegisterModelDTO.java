@@ -1,4 +1,4 @@
-package com.szhb.pokeapi.model;
+package com.szhb.pokeapi.model.dto;
 
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterModel {
+public class RegisterModelDTO {
     @NotNull
     private String username;
     @NotNull

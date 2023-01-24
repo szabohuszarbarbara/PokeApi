@@ -1,16 +1,14 @@
-package com.szhb.pokeapi.model;
+package com.szhb.pokeapi.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class PokemonType {
+public class PokemonTypeItemDTO {
     @JsonIgnoreProperties(ignoreUnknown = true)
-    private PokemonTypeItem type;
-
+    private String name;
 }

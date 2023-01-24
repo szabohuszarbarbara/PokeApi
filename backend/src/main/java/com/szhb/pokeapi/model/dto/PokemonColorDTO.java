@@ -1,4 +1,4 @@
-package com.szhb.pokeapi.model;
+package com.szhb.pokeapi.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class PokemonColorName {
+public class PokemonColorDTO {
     @JsonIgnoreProperties(ignoreUnknown = true)
-    private String name;
+    private PokemonColorNameDTO color;
 }
