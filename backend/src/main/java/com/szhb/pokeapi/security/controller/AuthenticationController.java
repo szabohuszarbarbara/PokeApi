@@ -1,6 +1,6 @@
 package com.szhb.pokeapi.security.controller;
 
-import com.szhb.pokeapi.model.RegisterModel;
+import com.szhb.pokeapi.model.dto.RegisterModelDTO;
 import com.szhb.pokeapi.security.*;
 import com.szhb.pokeapi.security.model.AuthenticationRequest;
 import com.szhb.pokeapi.security.model.JwtResponse;
@@ -54,7 +54,7 @@ public class AuthenticationController {
     private final UserService userService;
 
     @PostMapping(value = "/register")
-    public ResponseEntity<?> registerUser(@RequestBody RegisterModel body){
+    public ResponseEntity<?> registerUser(@RequestBody RegisterModelDTO body){
         String response = userService.addUser(body);
         if(Objects.equals(response, "success")){
             return ResponseEntity.ok(body);
