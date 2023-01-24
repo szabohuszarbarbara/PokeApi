@@ -1,5 +1,7 @@
 import "./CardModal.css";
 import "../pokemonList/PokemonList.css";
+import PokemonImage from "./PokemonImage";
+import PokemonStats from "./PokemonStats";
 
 function PokemonData(props) {
     const setShow = props.setShow
@@ -14,23 +16,10 @@ function PokemonData(props) {
     return (
         <div className={"modal-backdrop"} onClick={closeModal}>
             <div className={"modal-container"} onClick={e => e.stopPropagation()}>
-                <div className={`stripe ${pokeData.color.color.name}`} ></div>
                 <div className={"close-modal"} onClick={closeModal}>X</div>
-                <div className={"modal-image-container"}>
-                    <div className={"modal-image"}><img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokeData.id}.png`} alt=""/></div>
-                </div>
+                    <PokemonImage pokeData = {pokeData} />
                 <div className={"modal-attributes"}>
-                    <div className={"modal-name"}>{pokeData.name.toUpperCase()}</div>
-                    <div className="modal-id">#{pokeData.id.toLocaleString('en-US', {minimumIntegerDigits: 3, useGrouping:false})}</div>
-                    <br/>
-                    <div className={"modal-text"}>Type: {pokeData.types[0].type.name} </div>
-                    <div className={"modal-text"}>Height: {pokeData.height/10} m</div>
-                    <div className={"modal-text"}>Weight: {pokeData.weight/10} kg</div>
-                    <div className={"modal-text"}>XP: {pokeData.base_experience}</div>
-                    <div className={"modal-text"}>HP: {pokeData.stats[0].base_stat} </div>
-                    <div className={"modal-text"}>Attack: {pokeData.stats[1].base_stat} </div>
-                    <div className={"modal-text"}>Defense: {pokeData.stats[2].base_stat} </div>
-                    <div className={"modal-text"}>Speed: {pokeData.stats[5].base_stat} </div>
+                    <PokemonStats pokeData = {pokeData} />
                 </div>
             </div>
         </div>
