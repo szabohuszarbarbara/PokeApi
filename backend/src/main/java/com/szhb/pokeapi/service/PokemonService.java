@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
@@ -54,11 +55,11 @@ public class PokemonService {
 
     public PokemonModelDTO getPokemonOfTheDay() {
         LocalDate now = LocalDate.now();
-        Optional<PokemonDateModel> pokemonId = pokemonRepository.findByDate(now);
+        Optional<PokemonDateModel> pokemonId = pokemonRepository.findByDate(Date.valueOf(now));
         if (pokemonId.isEmpty()) {
             Random random = new Random();
             int id = random.nextInt(1279);
-            pokemonRepository.saveAndFlush(new PokemonDateModel(id, now));
+            pokemonRepository.saveAndFlush(new PokemonDateModel(id, Date.valueOf(now)));
             return getPokemonByIdOrName(String.valueOf(id));
         }
         return getPokemonByIdOrName(String.valueOf(pokemonId.get().getId()));

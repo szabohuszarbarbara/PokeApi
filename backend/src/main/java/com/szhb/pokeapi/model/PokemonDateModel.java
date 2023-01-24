@@ -3,7 +3,7 @@ package com.szhb.pokeapi.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.sql.Date;
 
 @Getter
 @Setter
@@ -13,10 +13,10 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "pokemons")
 public class PokemonDateModel {
-    @Id
-    private int id;
 
-    private LocalDate date;
+    private int id;
+    @Id
+    private Date date;
 
 
 }
