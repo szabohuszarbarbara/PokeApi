@@ -54,11 +54,14 @@ public class PokemonService {
     }
 
     public PokemonModelDTO getPokemonOfTheDay() {
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<PokemonBaseListDTO> basicInfo = restTemplate.getForEntity(BASE_URL, PokemonBaseListDTO.class);
+        int maxPokemon = Integer.parseInt(basicInfo.getBody().getCount());
         LocalDate now = LocalDate.now();
         Optional<PokemonDateModel> pokemonId = pokemonRepository.findByDate(Date.valueOf(now));
         if (pokemonId.isEmpty()) {
             Random random = new Random();
-            int id = random.nextInt(1279);
+            int id = random.nextInt(maxPokemon);
             pokemonRepository.saveAndFlush(new PokemonDateModel(id, Date.valueOf(now)));
             return getPokemonByIdOrName(String.valueOf(id));
         }
